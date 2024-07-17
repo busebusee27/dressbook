@@ -21,11 +21,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return MultiProvider(
-    //   providers: [
-    //     ChangeNotifierProvider(create: (_) => DressBookModel()),
-    //   ],
-    //   child: 
       return MaterialApp(
         title: 'DressBook',
         theme: ThemeData(
@@ -34,6 +29,5 @@ class MyApp extends StatelessWidget {
         ),
         home: DressBookScreen(),
       );
-    // );
   }
 }

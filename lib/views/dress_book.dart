@@ -2,7 +2,6 @@ import 'package:dressbook/constants.dart';
 import 'package:dressbook/models/dress_card.dart';
 import 'package:dressbook/services/database_service.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class DressBookScreen extends StatelessWidget {
   final DatabaseService _databaseService = DatabaseService();
@@ -20,11 +19,6 @@ class DressBookScreen extends StatelessWidget {
         onPressed: () {},
       ),
       body: _buildUI(),
-      // body: Consumer<DressBookModel>(
-      //   builder: (context, value, child) => ListView(
-      //     children: value.cardViews,
-      //   ),
-      // ),
     );
   }
 
