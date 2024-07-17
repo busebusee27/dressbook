@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "584046048279",
+    "project_id": "umm-erm-hmm",
+    "storage_bucket": "umm-erm-hmm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584046048279:android:cd712a68cbb87add479852",
+        "android_client_info": {
+          "package_name": "com.haani.dressbook"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUHucASlB22Y10O0nzdHY6ZADwuwbNV10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584046048279:android:3d70f16ee311955b479852",
+        "android_client_info": {
+          "package_name": "com.haani.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUHucASlB22Y10O0nzdHY6ZADwuwbNV10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
