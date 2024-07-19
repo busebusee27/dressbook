@@ -1,6 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+/// Immutable class representing a dress card shown in-app.
+/// 
+/// Each dress card includes the dress' name, and its current
+/// cleanliness status (represented by 0, 1, 2, 0 being the cleanest).
+/// 
+/// A dress card instance also stores the Timestamp of
+/// the first instance of creation of the record, and 
+/// the Timestamp of when it was last modified.
 class DressCard with ChangeNotifier {
   String name;
   int status;
