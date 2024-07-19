@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class DressCard with ChangeNotifier {
   String name;
-  String status;
+  int status;
   Timestamp dateCreated;
   Timestamp dateModified;
 
@@ -16,12 +16,12 @@ class DressCard with ChangeNotifier {
   DressCard.fromJson(Map<String, dynamic> json)
       : this(
             name: json['name'] as String,
-            status: json['status'] as String,
+            status: json['status'] as int,
             dateCreated: json['dateCreated'],
             dateModified: json['dateModified']);
 
   DressCard copyWith(
-      String? name, String? status, Timestamp? dateModified) {
+      String? name, int? status, Timestamp? dateModified) {
     return DressCard(
         name: name ?? this.name,
         status: status ?? this.status,
