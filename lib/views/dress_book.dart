@@ -56,4 +56,38 @@ class DressBookScreen extends StatelessWidget {
           }),
     );
   }
+
+  Widget _addDressAlert() {
+    TextEditingController controller = TextEditingController();
+
+    return FloatingActionButton(
+      child: const Icon(Icons.add),
+      onPressed: () {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text('Add Dress'),
+                content: TextField(
+                  controller: controller,
+                  decoration: const InputDecoration(hintText: 'Add dress'),
+                ),
+                actions: [
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        _databaseService.addDressCard(DressCard(
+                            name: controller.text,
+                            status: 0,
+                            dateCreated: Timestamp.now(),
+                            dateModified: Timestamp.now()));
+                        controller.clear();
+                      },
+                      child: const Text('Add')),
+                ],
+              );
+            });
+      },
+    );
+  }
 }
