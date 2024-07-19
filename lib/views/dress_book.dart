@@ -1,12 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dressbook/constants.dart';
 import 'package:dressbook/models/dress_card.dart';
 import 'package:dressbook/services/database_service.dart';
+import 'package:dressbook/services/time_difference.dart';
 import 'package:flutter/material.dart';
 
-class DressBookScreen extends StatelessWidget {
-  final DatabaseService _databaseService = DatabaseService();
+class DressBookScreen extends StatefulWidget {
+  const DressBookScreen({super.key});
 
-  DressBookScreen({super.key});
+  @override
+  State<DressBookScreen> createState() => _DressBookScreenState();
+}
+
+class _DressBookScreenState extends State<DressBookScreen> {
+  final DatabaseService _databaseService = DatabaseService();
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +21,10 @@ class DressBookScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('DressBook'),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {},
+      floatingActionButton: _addDressAlert(),
+      body: Builder(
+        builder: (context) => _buildUI(),
       ),
-      body: _buildUI(),
     );
   }
 
@@ -46,11 +52,43 @@ class DressBookScreen extends StatelessWidget {
                 itemCount: dressBook.length,
                 itemBuilder: (context, index) {
                   DressCard dressCard = dressBook[index].data();
-                  return ListTile(
-                    title: Text(dressCard.name),
-                    subtitle: Text('Updated: ${DateFormat('dd-MM-YYYY h:mm a')
-                        .format(dressCard.dateModified.toDate())}'),
-                    trailing: const Icon(Icons.more_vert_outlined),
+                  String dressCardID = dressBook[index].id;
+                  return Row(
+                    children: [
+                      Expanded(
+                          flex: 1,
+                          child: Container(
+                            color: switch (dressCard.status) {
+                              0 => Colors.pink,
+                              1 => Colors.amber,
+                              2 => Colors.blue,
+                              int() => throw UnimplementedError(),
+                            },
+                            child: const ListTile(),
+                          )),
+                      Expanded(
+                        flex: 50,
+                        child: ListTile(
+                          title: Text(dressCard.name),
+                          subtitle: Text(
+                              'Last Updated: ${timeDifference(dressCard.dateModified)}'),
+                          trailing: const Image(
+                            image: NetworkImage(
+                                'https://preview.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b'),
+                          ),
+                          onTap: () {
+                            int newStatus = (dressCard.status + 1) % 3;
+                            DressCard newDressCard = dressCard.copyWith(
+                                dressCard.name, newStatus, Timestamp.now());
+                            _databaseService.updateDressCard(
+                                dressCardID, newDressCard);
+                          },
+                          onLongPress: () {
+                            _databaseService.deleteDressCard(dressCardID);
+                          },
+                        ),
+                      ),
+                    ],
                   );
                 });
           }),

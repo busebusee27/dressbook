@@ -24,4 +24,12 @@ class DatabaseService {
   void addDressCard(DressCard dressCard) {
     _dressBookRef.add(dressCard);
   }
+
+  void updateDressCard(String dressCardID, DressCard dressCard) {
+    _dressBookRef.doc(dressCardID).update(dressCard.toJson());
+  }
+
+  void deleteDressCard(String dressCardID) {
+    _dressBookRef.doc(dressCardID).delete();
+  }
 }
