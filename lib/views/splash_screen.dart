@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:dressbook/views/dress_book.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
@@ -15,8 +14,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState(); 
-    Timer(const Duration(seconds: 3), 
-          () => Get.off(() => const DressBookScreen())
+    Timer(const Duration(seconds: 1), 
+          () => Get.offNamed('sign-in')
     );
   }
 

@@ -48,7 +48,7 @@ class _DressBookScreenState extends State<DressBookScreen> {
                 child: Text('Add dress!'),
               );
             }
-            return ListView.builder(
+            return  ListView.builder(
                 itemCount: dressBook.length,
                 itemBuilder: (context, index) {
                   DressCard dressCard = dressBook[index].data();
@@ -59,9 +59,9 @@ class _DressBookScreenState extends State<DressBookScreen> {
                           flex: 1,
                           child: Container(
                             color: switch (dressCard.status) {
-                              0 => Colors.pink,
+                              0 => Colors.green,
                               1 => Colors.amber,
-                              2 => Colors.blue,
+                              2 => Colors.red,
                               int() => throw UnimplementedError(),
                             },
                             child: const ListTile(),

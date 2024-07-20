@@ -10,6 +10,15 @@ import 'package:flutter/material.dart';
 /// the first instance of creation of the record, and 
 /// the Timestamp of when it was last modified.
 class DressCard with ChangeNotifier {
+  /// Abstraction function:
+  ///   AF(name, status, dateCreated, dateModified)
+  ///     => a dress card with name `name`, with current cleanliness status represented
+  ///        by `status`, created on `dateCreated`, and last modified on `dateModified`
+  /// 
+  /// Representation Invariant:
+  ///   - name must be a non-empty string using only letters and numbers
+  ///   - status must only take one of the values 0, 1, 2
+
   String name;
   int status;
   Timestamp dateCreated;
