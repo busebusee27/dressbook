@@ -23,11 +23,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
       return MaterialApp(
         title: 'DressBook',
-        theme: ThemeData(
-          useMaterial3: false,
-          colorScheme: colorScheme
-        ),
-        home: const DressBookScreen(),
-      );
+      theme: ThemeData(useMaterial3: false, colorScheme: colorScheme),
+      home: const SplashScreen(),
+      getPages: [
+        GetPage(name: '/', page: () => const DressBookScreen()),
+        GetPage(name: '/splash', page: () => const SplashScreen())
+      ],
+    );
   }
 }
