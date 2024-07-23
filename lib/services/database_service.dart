@@ -2,14 +2,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dressbook/models/dress_card.dart';
 
 const DRESSBOOK_COLLECTION_REF = 'dress-book';
+const USERS_COLLECTION_REF = 'users';
 
 class DatabaseService {
   final _firestore = FirebaseFirestore.instance;
 
-  late final CollectionReference _dressBookRef;
+  late final CollectionReference _usersRef;
 
   DatabaseService() {
-    _dressBookRef = _firestore
+    _usersRef = _firestore.collection(USERS_COLLECTION_REF);
+  }
+
+  CollectionReference getUserCollectionRef(String userUID) {
+    return _usersRef
+        .doc(userUID)
         .collection(DRESSBOOK_COLLECTION_REF)
         .withConverter<DressCard>(
             fromFirestore: (snapshots, _) =>
@@ -17,19 +23,20 @@ class DatabaseService {
             toFirestore: (dressCard, _) => dressCard.toJson());
   }
 
-  Stream<QuerySnapshot> getDressBook() {
-    return _dressBookRef.snapshots();
+  Stream<QuerySnapshot> getDressBook(String userUID) {
+    return getUserCollectionRef(userUID).snapshots();
   }
 
-  void addDressCard(DressCard dressCard) {
-    _dressBookRef.add(dressCard);
+  void addDressCard(String userUID, DressCard dressCard) {
+    getUserCollectionRef(userUID).add(dressCard);
   }
 
-  void updateDressCard(String dressCardID, DressCard dressCard) {
-    _dressBookRef.doc(dressCardID).update(dressCard.toJson());
+  void updateDressCard(
+      String userUID, String dressCardID, DressCard dressCard) {
+    getUserCollectionRef(userUID).doc(dressCardID).update(dressCard.toJson());
   }
 
-  void deleteDressCard(String dressCardID) {
-    _dressBookRef.doc(dressCardID).delete();
+  void deleteDressCard(String userUID, String dressCardID) {
+    getUserCollectionRef(userUID).doc(dressCardID).delete();
   }
 }

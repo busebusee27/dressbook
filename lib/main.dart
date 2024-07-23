@@ -9,9 +9,9 @@ import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  AppState _appState = AppState();
+  AppState appState = AppState();
   runApp(ChangeNotifierProvider(
-    create: (context) => _appState,
+    create: (context) => appState,
     builder: (context, child) => const MyApp(),
   ));
 }
