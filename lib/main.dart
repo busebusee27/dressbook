@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'DressBook',
-      theme: ThemeData(useMaterial3: false, colorScheme: colorScheme),
+      theme: appTheme,
       home: const SplashScreen(),
       getPages: [
         GetPage(name: '/home', page: () => const DressBookScreen()),

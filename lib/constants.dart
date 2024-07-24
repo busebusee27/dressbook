@@ -8,6 +8,7 @@ Size screenSize = view.physicalSize / view.devicePixelRatio;
 double SCREEN_WIDTH = screenSize.width;
 double SCREEN_HEIGHT = screenSize.height;
 
-
-Color themeColor = Colors.amber;
-ColorScheme colorScheme = ColorScheme.fromSeed(seedColor: themeColor);
+Color themeColor = Colors.purple;
+ColorScheme colorScheme =
+    ColorScheme.fromSeed(seedColor: themeColor, brightness: Brightness.dark);
+ThemeData appTheme = ThemeData(colorScheme: colorScheme);

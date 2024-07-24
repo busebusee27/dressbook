@@ -13,17 +13,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    super.initState(); 
-    Timer(const Duration(seconds: 1), 
-          () => Get.offNamed('sign-in')
-    );
+    super.initState();
+    Timer(const Duration(seconds: 1), () => Get.offNamed('sign-in'));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container( 
-      color: Colors.amber, 
-      child:FlutterLogo(size:MediaQuery.of(context).size.height) 
-    ); 
+    return Container(
+        child: FlutterLogo(size: MediaQuery.of(context).size.height));
   }
 }
