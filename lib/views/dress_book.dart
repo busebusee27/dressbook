@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dressbook/constants.dart';
 import 'package:dressbook/models/dress_card.dart';
 import 'package:dressbook/services/app_state.dart';
-import 'package:dressbook/services/cloud_storage.dart';
+// import 'package:dressbook/services/cloud_storage.dart';
 import 'package:dressbook/services/database_service.dart';
 import 'package:dressbook/services/time_difference.dart';
 import 'package:flutter/material.dart';
@@ -59,9 +59,11 @@ class _DressBookScreenState extends State<DressBookScreen> {
 
   Widget _buildUI() {
     return SafeArea(
-        child: Column(
-      children: [_messageListView()],
-    ));
+        child: SingleChildScrollView(
+          child: Column(
+                children: [_messageListView()],
+              ),
+        ));
   }
 
   Widget _messageListView() {
@@ -138,29 +140,29 @@ class _DressBookScreenState extends State<DressBookScreen> {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: const Text('Add Dress'),
-                content: TextField(
-                  controller: controller,
-                  decoration: const InputDecoration(hintText: 'Add dress'),
-                ),
-                actions: [
-                  Consumer<AppState>(
-                    builder: (context, appState, child) => ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          _databaseService.addDressCard(
-                              appState.currentUser!.uid,
-                              DressCard(
-                                  name: controller.text,
-                                  status: 0,
-                                  dateCreated: Timestamp.now(),
-                                  dateModified: Timestamp.now()));
-                          controller.clear();
-                        },
-                        child: const Text('Add')),
+                  title: const Text('Add Dress'),
+                  content: TextField(
+                    controller: controller,
+                    decoration: const InputDecoration(hintText: 'Add dress'),
                   ),
-                ],
-              );
+                  actions: [
+                    Consumer<AppState>(
+                      builder: (context, appState, child) => ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            _databaseService.addDressCard(
+                                appState.currentUser!.uid,
+                                DressCard(
+                                    name: controller.text,
+                                    status: 0,
+                                    dateCreated: Timestamp.now(),
+                                    dateModified: Timestamp.now()));
+                            controller.clear();
+                          },
+                          child: const Text('Add')),
+                    ),
+                  ],
+                );
             });
       },
     );
