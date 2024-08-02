@@ -1,17 +1,15 @@
-# dressbook
+# DressBook
 
-A new Flutter project.
+Just threw your too-clean-to-throw-in-the-laundry-but-a-bit-dirty-for-the-closet 
+outfit onto your spare chair? 
+Losing track of the ever growing pile of clothes on said chair? 
+Can't figure out how to deal with it all?
 
-## Getting Started
+Well, look no more! DressBook helps you keep track of your outfits and their 
+cleanliness status based on 3 colored states. With realtime cloud syncing to
+pair, never again worry about that mess on your chair!
 
-This project is a starting point for a Flutter application.
+DressBook uses Firebase for authentication, database, and cloud storage, so
+you can rest assured in confiding your (semi-)messy clothes to us.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# dressbook
+Try now by cloning this repo! (coming soon to an App/Play store near you)
